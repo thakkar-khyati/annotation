@@ -1,28 +1,31 @@
-function Input({ id,data }) {
+import { Box } from "@mui/material";
+
+function Input({ id, data,onChange }) {
   const placeholder = "INPUT TAG HERE";
-  console.log(id,data);
+  console.log(id, data);
   return (
-    <div className="rp-default-input-section">
-      <div>
+    <>
+      <Box
+        sx={{
+          width: 277,
+          height: 149,
+          backgroundColor:'#FFFFFF'
+        }}
+      >
         <input
-          className="rp-default-input-section_input"
+          // className="rp-default-input-section_input"
           placeholder={placeholder}
           value={data.label}
-          onChange={(e) => console.log(e.target.value)}
+          onChange={(e) => onChange(e.target.value)}
         />
-      </div>
-      <div>
         <input
-          className="rp-default-input-section_input"
+          // className="rp-default-input-section_input"
           placeholder={placeholder}
-          value={data.value}
-          onChange={(e) => console.log(e.target.value)}
+          value={data.label}
+          onChange={(e) => onChange(e.target.value)}
         />
-      </div>
-      {/* <a className="rp-default-input-section_delete" onClick={() => onDelete()}>
-              <DeleteButton />
-            </a> */}
-    </div>
+      </Box>
+    </>
   );
 }
 

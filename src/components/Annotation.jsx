@@ -4,11 +4,12 @@ import Input from "./Input";
 import { style } from "./Style";
 import invoice from "../assets/invoice_1.jpg";
 import invoiceData from "../assets/invoice_1.json";
+import { Box } from "@mui/material";
 
 function Annotation() {
   const [data, setData] = useState([]);
   const [id, setId] = useState([]);
-  const [openedData,setOpenedData] =useState({})
+  const [openedData, setOpenedData] = useState({});
   const [pageSize, setPageSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -24,12 +25,12 @@ function Annotation() {
 
   const onSelect = (selectedId) => {
     setId(selectedId);
-    data.map((d)=>{
-        if(d.id === id){
-            console.log(d)
-            setOpenedData(d)
-        }
-    })
+    data.map((d) => {
+      if (d.id === id) {
+        console.log(d);
+        setOpenedData(d);
+      }
+    });
   };
   const onChange = (data) => {
     console.log(data.value, data.label);
@@ -65,39 +66,46 @@ function Annotation() {
     conversion(invoiceData.words);
   }, []);
 
-//   useEffect(()=>{
-//     onSelect()
-//   },[openedData])
+  //   useEffect(()=>{
+  //     onSelect()
+  //   },[openedData])
 
   return (
     <div className="App">
       {/* <div style={{ height: 800, width: 1000 }}> */}
-      <ReactPictureAnnotation
-        // image="http://192.168.2.48:8000/users/images/images.png"
-        image={invoice}
-        onSelect={onSelect}
-        onChange={onChange}
-        width={pageSize.width}
-        height={pageSize.height}
-        //   width={1366}
-        //   height={768}
-        //   width={1000}
-        //   height={800}
-        annotationStyle={style}
-        annotationData={data}
-        scrollSpeed={0}
-        inputElement={() => {
-          return (
-            <>
-              <Input
-                id={id}
-                data={openedData}
-                //   onchange={onchange}
-              />
-            </>
-          );
+      <Box
+        sx={{
+          width: 1292,
+          height: 924,
+          padding: 0,
+          margin: 0,
         }}
-      />
+      >
+        <ReactPictureAnnotation
+          // image="http://192.168.2.48:8000/users/images/images.png"
+          image={invoice}
+          onSelect={onSelect}
+          onChange={onChange}
+          // width={pageSize.width}
+          // height={pageSize.height}
+          //   width={1366}
+          //   height={768}
+          //   width={1000}
+          //   height={800}
+          width={1292}
+          height={924}
+          annotationStyle={style}
+          annotationData={data}
+          scrollSpeed={0}
+          inputElement={() => {
+            return (
+              <>
+                <Input id={id} data={openedData} onchange={onchange} />
+              </>
+            );
+          }}
+        />
+      </Box>
       {/* </div> */}
     </div>
   );
