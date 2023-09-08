@@ -1,13 +1,13 @@
-function Input({ id }) {
+function Input({ id,data }) {
   const placeholder = "INPUT TAG HERE";
-  console.log(id);
+  console.log(id,data);
   return (
     <div className="rp-default-input-section">
       <div>
         <input
           className="rp-default-input-section_input"
           placeholder={placeholder}
-          // value={value}
+          value={data.label}
           onChange={(e) => console.log(e.target.value)}
         />
       </div>
@@ -15,7 +15,7 @@ function Input({ id }) {
         <input
           className="rp-default-input-section_input"
           placeholder={placeholder}
-          // value={value}
+          value={data.value}
           onChange={(e) => console.log(e.target.value)}
         />
       </div>
